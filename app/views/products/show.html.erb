@@ -1,0 +1,18 @@
+<%= render "shared/header" %>
+
+<div>
+  <%= image_tag (@product.image) %>
+</div>
+<div>
+  タイトル
+  <div>
+    <%= @product.title %>
+  </div>
+</div>
+<div>
+  価格
+  <div>
+    ￥<%= @product.price %>
+  </div>
+</div>
+
