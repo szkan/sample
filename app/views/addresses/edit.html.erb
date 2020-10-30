@@ -1,0 +1,35 @@
+<%= render "shared/header" %>
+<h2>住所情報変更</h2>
+
+<%= form_for(@address) do |f| %>
+  <%= render "devise/shared/error_messages", resource: @address %>
+
+  <div class="field">
+    <%= f.label :post_code %><br />
+    <%= f.text_field :post_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prefecture_id %><br />
+    <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :building_name %><br />
+    <%= f.text_field :building_name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

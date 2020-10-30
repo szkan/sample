@@ -17,6 +17,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @address = @user.build_address
     render :new_address
   end
+  def show
+  end
+  def update
+    if current_user.update(user_params)
+      redirect_to mypage_path
+    else
+      redirect_to edit_user_registration_path
+    end
+  end
+
+
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])
     @address = Address.new(address_params)
@@ -28,11 +39,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)
   end
+
+  
  
   private
  
   def address_params
     params.require(:address).permit(:post_code, :prefecture_id, :city, :address, :building_name)
+  end
+  private
+  def user_params
+    params.require(:user).permit(:name, :email) # 編集出来る情報を制限
   end
 
   # GET /resource/sign_up

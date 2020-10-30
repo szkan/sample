@@ -1,0 +1,13 @@
+<%= render "shared/header" %>
+
+<ul>
+  <li>
+  <%= link_to "ユーザー情報を編集する", edit_user_registration_path(current_user) %>
+  </li>
+  <li>
+  <%= link_to "配送先変更", edit_address_path(current_user.address) %>
+  </li>
+  <li>
+    <%= link_to "クレジットカード情報", card_path(current_user.card) %>
+  </li>
+</ul>

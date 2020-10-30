@@ -1,6 +1,7 @@
-class CreateCustomers < ActiveRecord::Migration[6.0]
+class CreateOrders < ActiveRecord::Migration[6.0]
   def change
-    create_table :customers do |t|
+    create_table :orders do |t|
+      t.references :product, null: false, foreign_key: true
       t.string :email, null: false
       t.string :phone_number, null: false
       t.string :post_code, null: false
@@ -8,7 +9,6 @@ class CreateCustomers < ActiveRecord::Migration[6.0]
       t.string :city, null: false
       t.string :address, null: false
       t.string :building_name
-      t.references :order, null: false, foreign_key: true
       t.timestamps
     end
   end

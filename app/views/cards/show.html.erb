@@ -1,0 +1,28 @@
+<%= render "shared/header" %>
+
+<h1>クレジットカード情報</h1>
+<% if current_user.card.present? == false %>
+  <li>
+  <%= link_to "登録", new_card_path %>
+  </li>
+<% else %>  
+  <div class="Card__title">
+    <h2>登録済みのカード情報<h2>
+  </div>
+  <%# @cards.each do |card| %>
+    <div class="Card_info">
+      【カード番号】
+      <br>
+      <%= "**** **** **** " + @card[:last4] %>
+      <br>
+      【有効期限】
+      <br>
+      <%= @card[:exp_month] %>
+      /
+      <%= @card[:exp_year] %>
+    </div>
+    <div>
+      <%= link_to "削除", "#", method: :delete %>
+    </div>
+  <%# end %> 
+<% end %>
